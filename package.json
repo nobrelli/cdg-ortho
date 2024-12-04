@@ -1,0 +1,49 @@
+{
+  "name": "@cdg/ortho",
+  "author": "Ryu Rabino",
+  "description": "",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently 'yarn dev:react' 'yarn dev:electron'",
+    "dev:react": "vite",
+    "dev:electron": "yarn transpile:electron && NODE_ENV=development electron .",
+    "build": "tsc -b && vite build",
+    "lint": "biome check --write ./src",
+    "format": "biome format --write ./src",
+    "preview": "vite preview",
+    "transpile:electron": "tsc -p src/electron/tsconfig.json",
+    "dist:mac": "yarn transpile:electron && yarn build && electron-builder --mac --x64",
+    "dist:win": "yarn transpile:electron && yarn build && electron-builder --win --x64"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.14.3",
+    "@mantine/dates": "^7.14.3",
+    "@mantine/form": "^7.14.3",
+    "@mantine/hooks": "^7.14.3",
+    "@tabler/icons-react": "^3.24.0",
+    "dayjs": "^1.11.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-imask": "^7.6.1",
+    "react-router": "^7.0.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "globals": "^15.12.0",
+    "postcss": "^8.4.49",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.2"
+  },
+  "packageManager": "yarn@4.5.3"
+}
