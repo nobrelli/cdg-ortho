@@ -2,12 +2,19 @@
     "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/refs/heads/master/packages/app-builder-lib/scheme.json",
     "appId": "com.cdg.ortho",
     "files": ["dist-electron", "dist-react"],
-    "forceCodeSigning": false,
+    "extraResources": [
+        "dist-electron/preload.cjs"
+    ],
     "win": {
         "executableName": "CDG Ortho",
         "target": "nsis"
     },
     "mac": {
         "target": "dmg"
-    }
+    },
+    "nsis": {
+        "oneClick": false
+    },
+    "forceCodeSigning": false,
+    "compression": "maximum"
 }
